@@ -1,0 +1,80 @@
+<!-- By Andy Nguyen -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <title>Login and Registration - Index Page</title>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-dark rounded-bottom bg-dark text-white justify-content-between mb-4">
+            <a class="navbar-brand">Cool Website</a>
+        </nav>
+    </div>    
+
+    <div class="container">
+        <div class="body row">
+            <!-- REGISTRATION FORM -->
+            <div class="col-xs-6 col-md-6">
+                <h4>Register:</h4>
+                <form action="/register" method="post">
+                    {% csrf_token %}
+                    <!-- FIRST NAME -->
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="first_name" placeholder="First Name">
+                    </div>
+                    <!-- LAST NAME -->
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="last_name" placeholder="Last Name">
+                    </div>
+                    <!-- EMAIL -->
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="email" placeholder="Email">
+                    </div>
+                    <!-- PASSWORD -->
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" placeholder="Password">
+                    </div>
+                    <!-- CONFIRM PASSWORD -->
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password">
+                    </div>
+                    <a href="/register"><button type="submit" class="btn btn-primary">Register</button></a>
+                    {% if messages %}
+                        {% for message in messages %}
+                            {% if "register" in message.tags %}
+                                <p{% if message.tags %} class="{{ message.tags }} text-danger mt-1"{% endif %}>{{ message }}</p>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </form>
+            </div>
+
+            <!-- LOGIN FORM -->
+            <div class="col-xs-6 col-md-6">
+                <h4>Login:</h4>
+                <form action="/login" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="email" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" placeholder="Password">
+                    </div>
+                    <a href="/login"><button type="submit" class="btn btn-primary">Login</button></a>
+                    {% if messages %}
+                        {% for message in messages %}
+                            {% if "login" in message.tags %}
+                                <p{% if message.tags %} class="{{ message.tags }} text-danger mt-1"{% endif %}>{{ message }}</p>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

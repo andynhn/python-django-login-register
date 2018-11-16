@@ -1,0 +1,38 @@
+<!-- By Andy Nguyen -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <title>Login and Registration - Dashboard Page</title>
+</head>
+<body>
+    <div class="container">
+        <div class="body">
+            <h1>Successful Login! Welcome, {{user.first_name}}!</h1>
+            <table class="table table-sm table-bordered">
+                <tr>
+                    <th>First Name:</th>
+                    <td>{{ user.first_name }}</td>
+                </tr>
+                <tr>
+                    <th>Last Name:</th>
+                    <td>{{ user.last_name }}</td>
+                </tr>
+                <tr>
+                    <th>Email:</th>
+                    <td>{{ user.email }}</td>
+                </tr>
+            </table>
+            
+            <div class="row"></div>
+
+            <p class="d-flex justify-content-end">
+                <a type="button" class="btn btn-warning text-dark" href="/reset">Logout</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
